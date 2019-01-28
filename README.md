@@ -3,8 +3,19 @@ Self-Driving Car Engineer Nanodegree Program
 
 ---
 
-## Dependencies
+## Project Description
 
+### The Model
+The model used for the implementation of the MPC takes does not take into consideration forces but just the kinematics. This basic model implementation allow us to predict the position of the car based on the actuator's output and vehicle current state. Even though it is not an accurate model, the control is able to perform very well in corners at higher speed than a simpler PID control.
+
+### Time step and elapsed time
+By using N = 10 and dt = 0.05 I got good results. This means that the horizon is 0.5s long. Since the model used is not too accurate, it makes no sense to optimize the horizont longer than 1s.
+
+The more reactive and faster the vehicle is, the smaller has to be dt.
+
+---
+
+## Dependencies
 * cmake >= 3.5
  * All OSes: [click here for installation instructions](https://cmake.org/install/)
 * make >= 4.1(mac, linux), 3.81(Windows)
@@ -37,6 +48,13 @@ Self-Driving Car Engineer Nanodegree Program
 2. Make a build directory: `mkdir build && cd build`
 3. Compile: `cmake .. && make`
 4. Run it: `./mpc`.
+
+## Known issues
+
+* If you get an error saying that **libcoinblas.so.1: cannot open shared object** you must set the environmental variable by exporting the /usr/local/lib path. To do this, you can add the next line at the end of your .bashrc file:
+```
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/
+```
 
 ## Build with Docker-Compose
 The docker-compose can run the project into a container
