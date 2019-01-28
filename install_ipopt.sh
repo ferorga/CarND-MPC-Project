@@ -42,4 +42,4 @@ cd $srcdir
     --with-lapack=$prefix/lib/libcoinlapack.a
 make
 make test
-make -j1 install
+make -j8 install
